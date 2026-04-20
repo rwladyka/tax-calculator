@@ -1,8 +1,8 @@
 import type {
-  TaxBracket,
   TaxBandResult,
+  TaxBracket,
   TaxCalculationResult,
-} from "../types/tax-calculator.types";
+} from '../types/tax-calculator.types';
 
 /**
  * Calculates the tax owed for a single bracket.
@@ -14,10 +14,7 @@ import type {
  * @param bracket - Tax bracket definition from the API
  * @returns Tax band result with taxable amount and tax owed
  */
-export function calculateBandTax(
-  income: number,
-  bracket: TaxBracket,
-): TaxBandResult {
+export function calculateBandTax(income: number, bracket: TaxBracket): TaxBandResult {
   const max = bracket.max ?? Infinity;
 
   if (income <= bracket.min) {
@@ -67,19 +64,15 @@ export function calculateTax(
   taxYear: number,
 ): TaxCalculationResult {
   if (annualIncome < 0) {
-    throw new Error("Annual income must be zero or greater");
+    throw new Error('Annual income must be zero or greater');
   }
 
   if (taxBrackets.length === 0) {
-    throw new Error("At least one tax bracket is required");
+    throw new Error('At least one tax bracket is required');
   }
 
-  const bands = taxBrackets.map((bracket) =>
-    calculateBandTax(annualIncome, bracket),
-  );
-  const totalTax = roundCurrency(
-    bands.reduce((sum, band) => sum + band.taxOwed, 0),
-  );
+  const bands = taxBrackets.map((bracket) => calculateBandTax(annualIncome, bracket));
+  const totalTax = roundCurrency(bands.reduce((sum, band) => sum + band.taxOwed, 0));
   const effectiveRate = annualIncome > 0 ? totalTax / annualIncome : 0;
 
   return {
@@ -105,9 +98,9 @@ export function roundCurrency(amount: number): number {
  * @example formatCurrency(17739.17) → "$17,739.17"
  */
 export function formatCurrency(amount: number): string {
-  return new Intl.NumberFormat("en-CA", {
-    style: "currency",
-    currency: "CAD",
+  return new Intl.NumberFormat('en-CA', {
+    style: 'currency',
+    currency: 'CAD',
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   }).format(amount);

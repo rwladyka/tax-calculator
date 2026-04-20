@@ -1,11 +1,10 @@
-import { z } from "zod";
-
-import {
+import type { z } from 'zod';
+import type { SUPPORTED_TAX_YEARS } from '@/config/constraints';
+import type {
   taxBracketSchema,
   taxBracketsResponseSchema,
   taxFormSchema,
-} from "./tax-calculator-schemas";
-import { SUPPORTED_TAX_YEARS } from "@/config/constraints";
+} from './tax-calculator-schemas';
 
 export type TaxBracket = z.infer<typeof taxBracketSchema>;
 export type TaxBracketsResponse = z.infer<typeof taxBracketsResponseSchema>;

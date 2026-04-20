@@ -1,7 +1,7 @@
-import { describe, it, expect } from "vitest";
-import { render, screen } from "@testing-library/react";
-import { TaxResults } from "./TaxResults";
-import type { TaxCalculationResult } from "../types/tax-calculator.types";
+import { render, screen } from '@testing-library/react';
+import { describe, expect, it } from 'vitest';
+import type { TaxCalculationResult } from '../types/tax-calculator.types';
+import { TaxResults } from './TaxResults';
 
 const mockResult: TaxCalculationResult = {
   annualIncome: 100000,
@@ -23,39 +23,39 @@ const mockResult: TaxCalculationResult = {
   ],
 };
 
-describe("TaxResults", () => {
-  it("renders the results container", () => {
+describe('TaxResults', () => {
+  it('renders the results container', () => {
     render(<TaxResults result={mockResult} />);
-    expect(screen.getByTestId("tax-results")).toBeInTheDocument();
+    expect(screen.getByTestId('tax-results')).toBeInTheDocument();
   });
 
-  it("displays total tax amount", () => {
+  it('displays total tax amount', () => {
     render(<TaxResults result={mockResult} />);
-    const totalTax = screen.getByTestId("total-tax");
-    expect(totalTax).toHaveTextContent("17,739.17");
+    const totalTax = screen.getByTestId('total-tax');
+    expect(totalTax).toHaveTextContent('17,739.17');
   });
 
-  it("displays effective rate", () => {
+  it('displays effective rate', () => {
     render(<TaxResults result={mockResult} />);
-    const rate = screen.getByTestId("effective-rate");
-    expect(rate).toHaveTextContent("17.74%");
+    const rate = screen.getByTestId('effective-rate');
+    expect(rate).toHaveTextContent('17.74%');
   });
 
-  it("displays annual income", () => {
+  it('displays annual income', () => {
     render(<TaxResults result={mockResult} />);
-    const income = screen.getByTestId("annual-income");
-    expect(income).toHaveTextContent("100,000.00");
+    const income = screen.getByTestId('annual-income');
+    expect(income).toHaveTextContent('100,000.00');
   });
 
-  it("renders a row for each tax band", () => {
+  it('renders a row for each tax band', () => {
     render(<TaxResults result={mockResult} />);
-    const rows = screen.getAllByRole("row");
+    const rows = screen.getAllByRole('row');
     expect(rows).toHaveLength(7);
   });
 
-  it("shows total in the table footer", () => {
+  it('shows total in the table footer', () => {
     render(<TaxResults result={mockResult} />);
-    const footer = screen.getByTestId("total-tax-footer");
-    expect(footer).toHaveTextContent("17,739.17");
+    const footer = screen.getByTestId('total-tax-footer');
+    expect(footer).toHaveTextContent('17,739.17');
   });
 });

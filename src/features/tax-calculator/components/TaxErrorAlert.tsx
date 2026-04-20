@@ -1,4 +1,4 @@
-import { CircleX, X } from "lucide-react";
+import { CircleX, X } from 'lucide-react';
 
 type TaxErrorAlertProps = {
   message: string;
@@ -19,6 +19,7 @@ export const TaxErrorAlert = ({ message, onDismiss }: TaxErrorAlertProps) => (
       </div>
       {onDismiss && (
         <button
+          type="button"
           onClick={onDismiss}
           aria-label="Dismiss error"
           className="cursor-pointer rounded-md p-1 text-red-400 transition-colors hover:text-red-600 focus:outline-none focus:ring-2 focus:ring-red-500"

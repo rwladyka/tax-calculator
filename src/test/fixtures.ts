@@ -1,4 +1,4 @@
-import type { TaxBracket } from "@/features/tax-calculator/types/tax-calculator.types";
+import type { TaxBracket } from '@/features/tax-calculator/types/tax-calculator.types';
 
 export const MOCK_2022_BRACKETS: TaxBracket[] = [
   { min: 0, max: 50197, rate: 0.15 },

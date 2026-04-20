@@ -1,5 +1,5 @@
-import { SUPPORTED_TAX_YEARS } from "@/config/constraints";
-import { useFormContext } from "react-hook-form";
+import { useFormContext } from 'react-hook-form';
+import { SUPPORTED_TAX_YEARS } from '@/config/constraints';
 
 type YearSelectProps = {
   isLoading: boolean;
@@ -12,23 +12,20 @@ export const YearSelect = ({ isLoading }: YearSelectProps) => {
   } = useFormContext();
   return (
     <>
-      <label
-        htmlFor="taxYear"
-        className="mb-1 block text-sm font-medium text-gray-700"
-      >
+      <label htmlFor="taxYear" className="mb-1 block text-sm font-medium text-gray-700">
         Tax Year
       </label>
       <select
-        {...register("taxYear")}
+        {...register('taxYear')}
         id="taxYear"
         name="taxYear"
         disabled={isLoading}
         aria-invalid={!!errors.taxYear}
-        aria-describedby={errors.taxYear ? "year-error" : undefined}
+        aria-describedby={errors.taxYear ? 'year-error' : undefined}
         className={`w-full rounded-md border py-2 pl-3 pr-8 text-sm shadow-sm transition-colors focus:outline-none focus:ring-2 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 ${
           errors.taxYear
-            ? "border-red-300 focus:border-red-500 focus:ring-red-500"
-            : "border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+            ? 'border-red-300 focus:border-red-500 focus:ring-red-500'
+            : 'border-gray-300 focus:border-blue-500 focus:ring-blue-500'
         }`}
       >
         <option value="">Select a year</option>

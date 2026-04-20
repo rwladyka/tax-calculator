@@ -1,6 +1,6 @@
-import { env } from "@/config/env";
+import { env } from '@/config/env';
 
-type LogLevel = "debug" | "info" | "warn" | "error";
+type LogLevel = 'debug' | 'info' | 'warn' | 'error';
 
 type LogEntry = {
   level: LogLevel;
@@ -40,26 +40,22 @@ class Logger {
   }
 
   debug(message: string, data?: Record<string, unknown>): void {
-    this.log("debug", message, data);
+    this.log('debug', message, data);
   }
 
   info(message: string, data?: Record<string, unknown>): void {
-    this.log("info", message, data);
+    this.log('info', message, data);
   }
 
   warn(message: string, data?: Record<string, unknown>): void {
-    this.log("warn", message, data);
+    this.log('warn', message, data);
   }
 
   error(message: string, data?: Record<string, unknown>): void {
-    this.log("error", message, data);
+    this.log('error', message, data);
   }
 
-  private log(
-    level: LogLevel,
-    message: string,
-    data?: Record<string, unknown>,
-  ): void {
+  private log(level: LogLevel, message: string, data?: Record<string, unknown>): void {
     if (LOG_LEVEL_PRIORITY[level] < LOG_LEVEL_PRIORITY[this.minLevel]) {
       return;
     }
@@ -80,8 +76,9 @@ class Logger {
    * with external logging services in production.
    */
   private output(entry: LogEntry): void {
-    const method = entry.level === "debug" ? "log" : entry.level;
-    console[method](`[${entry.context}]`, entry.message, entry.data ?? "");
+    const method = entry.level === 'debug' ? 'log' : entry.level;
+    // biome-ignore lint/suspicious/noConsole: Logger is the only allowed console consumer
+    console[method](`[${entry.context}]`, entry.message, entry.data ?? '');
   }
 }
 

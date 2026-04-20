@@ -1,4 +1,4 @@
-import { useFormContext } from "react-hook-form";
+import { useFormContext } from 'react-hook-form';
 
 type IncomeInputProps = {
   isLoading: boolean;
@@ -11,10 +11,7 @@ export const IncomeInput = ({ isLoading }: IncomeInputProps) => {
   } = useFormContext();
   return (
     <>
-      <label
-        htmlFor="annualIncome"
-        className="mb-1 block text-sm font-medium text-gray-700"
-      >
+      <label htmlFor="annualIncome" className="mb-1 block text-sm font-medium text-gray-700">
         Annual Income
       </label>
       <div className="relative">
@@ -22,7 +19,7 @@ export const IncomeInput = ({ isLoading }: IncomeInputProps) => {
           $
         </span>
         <input
-          {...register("annualIncome", { valueAsNumber: true })}
+          {...register('annualIncome', { valueAsNumber: true })}
           id="annualIncome"
           name="annualIncome"
           type="number"
@@ -32,11 +29,11 @@ export const IncomeInput = ({ isLoading }: IncomeInputProps) => {
           placeholder="0.00"
           disabled={isLoading}
           aria-invalid={!!errors.annualIncome}
-          aria-describedby={errors.annualIncome ? "income-error" : undefined}
+          aria-describedby={errors.annualIncome ? 'income-error' : undefined}
           className={`w-full rounded-md border py-2 pl-7 pr-3 text-sm shadow-sm transition-colors focus:outline-none focus:ring-2 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 ${
             errors.annualIncome
-              ? "border-red-300 focus:border-red-500 focus:ring-red-500"
-              : "border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+              ? 'border-red-300 focus:border-red-500 focus:ring-red-500'
+              : 'border-gray-300 focus:border-blue-500 focus:ring-blue-500'
           }`}
         />
       </div>

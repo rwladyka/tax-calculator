@@ -1,11 +1,11 @@
-import { LoaderCircle } from "lucide-react";
-import { FormProvider, useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { zodResolver } from '@hookform/resolvers/zod';
+import { LoaderCircle } from 'lucide-react';
+import { FormProvider, useForm } from 'react-hook-form';
 
-import type { TaxFormData } from "../../types/tax-calculator.types";
-import { YearSelect } from "./YearSelect";
-import { IncomeInput } from "./IncomeInput";
-import { taxFormSchema } from "../../types/tax-calculator-schemas";
+import type { TaxFormData } from '../../types/tax-calculator.types';
+import { taxFormSchema } from '../../types/tax-calculator-schemas';
+import { IncomeInput } from './IncomeInput';
+import { YearSelect } from './YearSelect';
 
 type TaxFormProps = {
   onSubmit: (data: TaxFormData) => void;
@@ -23,11 +23,7 @@ export const TaxForm = ({ onSubmit, isLoading }: TaxFormProps) => {
 
   return (
     <FormProvider {...methods}>
-      <form
-        onSubmit={methods.handleSubmit(handleSubmit)}
-        noValidate
-        className="space-y-5"
-      >
+      <form onSubmit={methods.handleSubmit(handleSubmit)} noValidate className="space-y-5">
         <IncomeInput isLoading={isLoading} />
 
         <YearSelect isLoading={isLoading} />
@@ -43,7 +39,7 @@ export const TaxForm = ({ onSubmit, isLoading }: TaxFormProps) => {
               Calculating…
             </>
           ) : (
-            "Calculate Tax"
+            'Calculate Tax'
           )}
         </button>
       </form>

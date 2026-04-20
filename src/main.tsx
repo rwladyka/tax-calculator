@@ -1,13 +1,13 @@
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ErrorBoundary } from "./components/ui/error-boundary";
-import { TaxCalculatorPage } from "./features/tax-calculator";
-import { env } from "./config/env";
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import { ErrorBoundary } from './components/ui/error-boundary';
+import { env } from './config/env';
+import { TaxCalculatorPage } from './features/tax-calculator';
 
-import "@/index.css";
+import '@/index.css';
 
-const rootElement = document.getElementById("root");
+const rootElement = document.getElementById('root');
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -24,9 +24,7 @@ const queryClient = new QueryClient({
 });
 
 if (!rootElement) {
-  throw new Error(
-    'Root element not found. Ensure index.html contains <div id="root">.',
-  );
+  throw new Error('Root element not found. Ensure index.html contains <div id="root">.');
 }
 
 createRoot(rootElement).render(
